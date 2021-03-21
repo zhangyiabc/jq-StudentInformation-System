@@ -1,0 +1,32 @@
+
+
+.filterFanc {
+    height: 42px;
+    line-height: 20px;
+}
+
+.filterFanc .btn {
+    margin-left: 20px;
+    box-sizing: border-box;
+    height: 40px;
+    border-radius: 5px;
+    display: inline-block;
+    line-height: 20px;
+    padding: 10px 10px;
+    font-size: 20px;
+    color: #fff;
+}
+.filterFanc input {
+    float: left;
+    font-size: 18px;
+    box-sizing: border-box;
+    border: #666 1px solid;
+    border-radius: 5px;
+    outline: none;
+    padding-left: 10px;
+    height: 40px;
+    width: 308px;
+}
+.filterFanc .active {
+    background-color: tomato;
+}
