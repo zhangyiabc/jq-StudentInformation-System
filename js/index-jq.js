@@ -182,12 +182,12 @@ function getTableData() {
             if (res.status == "success") {
                 tableData = res.data.nowData;
                 pageObj.total = Math.ceil(res.data.total / pageObj.size);
-                // timer = setTimeout(function () {
-                //     var newArr = filterSex(tableData, fillerObj.sex);
-                //     renderDom(filterInput(newArr, fillerObj.text));
-                // }, 30)
-                var newArr = filterSex(tableData, fillerObj.sex);
+                setTimeout(function () {
+                    var newArr = filterSex(tableData, fillerObj.sex);
                     renderDom(filterInput(newArr, fillerObj.text));
+                }, 300)
+                // var newArr = filterSex(tableData, fillerObj.sex);
+                //     renderDom(filterInput(newArr, fillerObj.text));
             }
         }
     })
