@@ -168,7 +168,7 @@ function bindEvent() {
 }
 
 function getTableData() {
-    clearTimeout(timer)
+    // clearTimeout(timer)
     $.ajax({
         url: '/studentList',
         type: "get",
@@ -185,9 +185,8 @@ function getTableData() {
                 setTimeout(function () {
                     var newArr = filterSex(tableData, fillerObj.sex);
                     renderDom(filterInput(newArr, fillerObj.text));
+                    $('.loading').hide();
                 }, 300)
-                // var newArr = filterSex(tableData, fillerObj.sex);
-                //     renderDom(filterInput(newArr, fillerObj.text));
             }
         }
     })
