@@ -47,8 +47,6 @@ Mock.mock(RegExp('studentList?[\w\W]*'), 'get', function (options) {
     })
     nowData = filterSex(nowData,myObj.sex);
     nowData = filterInput(nowData,myObj.text);
-    // console.log(nowData)
-
     return {
         "data": {
             total: dataArr.result.length,

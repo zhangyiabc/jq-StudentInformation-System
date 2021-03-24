@@ -23,9 +23,7 @@ var pageObj = {
 }
 //将查找组件插入页面
 // $('.header > .f').load('find/find.html')
-$('.header > .f').load('find/find.html',function(){
-    $('.loading').hide();
-})
+
 
 
 function bindEvent() {
