@@ -27,6 +27,11 @@ var pageObj = {
 
 
 function bindEvent() {
+    $("dd[data-id=student-add]").click(function(){
+        $('.filterFanc').fadeOut();
+    }).siblings().click(function(){
+        $('.filterFanc').fadeIn();
+    })
     $('.menu').on('click', 'dd', function () {
         var id = $(this).data('id');
         $(this).addClass('active')
@@ -133,6 +138,7 @@ function bindEvent() {
                         alert(res.msg);
                         getTableData()
                         $('.menu > dd[data-id=student-list]').trigger('click');
+                        // $('.filterFanc').fadeIn();
                     }
                 }
             })
