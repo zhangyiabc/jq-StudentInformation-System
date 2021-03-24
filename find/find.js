@@ -4,7 +4,6 @@ function filterInput(data, tj) {
     // console.log(tj)
     return data.filter(function (ele) {
         if (!tj) {
-
             return data;
         }
         // console.log(ele)

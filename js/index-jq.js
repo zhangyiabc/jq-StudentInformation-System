@@ -3,6 +3,7 @@
 //数字类型没有indexOf()方法
 var timer = null;
 var tableData = [];
+var dataClone = [];
 //初始化查找
 var fillerObj = {
     text: '',
@@ -21,7 +22,11 @@ var pageObj = {
     size: 17,
 }
 //将查找组件插入页面
-$('.header > .f').load('find/find.html')
+// $('.header > .f').load('find/find.html')
+$('.header > .f').load('find/find.html',function(){
+    $('.loading').hide();
+})
+
 
 function bindEvent() {
     $('.menu').on('click', 'dd', function () {
@@ -140,30 +145,28 @@ function bindEvent() {
     //过滤事件
     $('.header').on('input', "input", function () {
         fillerObj.text = $(this).val();
-        var newArr = filterInput(tableData, fillerObj.text);
-        renderDom(filterSex(newArr, fillerObj.sex));
+
+        getTableData();
     })
 
     $('.header').on('click', "span[sex='0']", function () {
         $(this).addClass('active').siblings().removeClass('active');
         fillerObj.sex = '0';
-        var newArr = filterSex(tableData, fillerObj.sex);
-        renderDom(filterInput(newArr, fillerObj.text));
+        getTableData();
     })
 
     $('.header').on('click', "span[sex='1']", function () {
         $(this).addClass('active').siblings().removeClass('active');
         fillerObj.sex = '1';
-        var newArr = filterSex(tableData, fillerObj.sex);
-        renderDom(filterInput(newArr, fillerObj.text));
+
+        getTableData();
     })
 
     $('.header').on('click', "span[sex='all']", function () {
         $(this).addClass('active').siblings().removeClass('active');
         fillerObj.sex = 'all';
-        var newArr = filterSex(tableData, fillerObj.sex);
-        renderDom(filterInput(newArr, fillerObj.text));
 
+        getTableData();
     })
 }
 
@@ -174,6 +177,8 @@ function getTableData() {
         type: "get",
         dataType: "json",
         data: {
+            sex:fillerObj.sex,
+            text:fillerObj.text,
             page: pageObj.nowPage,
             size: pageObj.size
         },
@@ -181,12 +186,11 @@ function getTableData() {
             // console.log(res)
             if (res.status == "success") {
                 tableData = res.data.nowData;
+                // dataClone = res.data.nowData;
                 pageObj.total = Math.ceil(res.data.total / pageObj.size);
-                setTimeout(function () {
-                    var newArr = filterSex(tableData, fillerObj.sex);
-                    renderDom(filterInput(newArr, fillerObj.text));
-                    $('.loading').hide();
-                }, 300)
+                renderDom(tableData)
+
+                
             }
         }
     })

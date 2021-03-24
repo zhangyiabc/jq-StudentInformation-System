@@ -35,7 +35,7 @@ Mock.mock(RegExp('studentList?[\w\W]*'), 'get', function (options) {
     var myStr = options.url.slice(options.url.indexOf('?') + 1);
     //再把字符串转化为对象
     var myObj = formatQuery(myStr);
-    console.log(myObj)
+    // console.log(myObj)
 
     //筛选数据当前页面的
     // 第一页  10条   0 - 9
@@ -45,6 +45,10 @@ Mock.mock(RegExp('studentList?[\w\W]*'), 'get', function (options) {
 
         return index >= myObj.size * (myObj.page - 1) && index < myObj.size * myObj.page
     })
+    nowData = filterSex(nowData,myObj.sex);
+    nowData = filterInput(nowData,myObj.text);
+    // console.log(nowData)
+
     return {
         "data": {
             total: dataArr.result.length,
